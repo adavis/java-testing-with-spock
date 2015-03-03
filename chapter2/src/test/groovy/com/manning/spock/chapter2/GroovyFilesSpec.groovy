@@ -7,7 +7,7 @@ class GroovyFilesSpec extends spock.lang.Specification{
 	def "demo for reading a text file"() {
 		when: "a paragraph is processed"
 		WordDetector wordDetector = new WordDetector();
-		String inputText = new File("src/test/resources/quotes.txt").text
+		String inputText = new File(this.getClass().getResource("/quotes.txt").toURI()).text
 		wordDetector.parseText(inputText); 
 
 		then: "word frequency should be correct"
@@ -17,7 +17,7 @@ class GroovyFilesSpec extends spock.lang.Specification{
 	
 	def "demo for reading a text file line by line"() {
 		when: "a paragraph is processed"
-		List<String> inputText = new File("src/test/resources/quotes.txt").readLines()
+		List<String> inputText = new File(this.getClass().getResource("/quotes.txt").toURI()).readLines()
 		WordDetector wordDetector = new WordDetector();
 		for(String line:inputText)
 		{
